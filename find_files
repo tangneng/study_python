@@ -1,0 +1,8 @@
+import os
+path = 'e:/OneDrive/'
+files = os.listdir(path)
+
+for f in files:
+    if '报价' in f and f.endswith('.xls') or f.endswith('.xlsx'):
+        print('find it:'+f)
+
