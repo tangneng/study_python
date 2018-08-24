@@ -1,3 +1,5 @@
+#find_current_dir_files
+
 import os
 path = 'e:/OneDrive/'
 files = os.listdir(path)
@@ -6,3 +8,24 @@ for f in files:
     if '报价' in f and f.endswith('.xls') or f.endswith('.xlsx'):
         print('find it:'+f)
 
+#find all_files
+import os
+
+def detect_walk(dir_path):
+    c=0
+    d=0
+    for root,dirs,files in os.walk(dir_path):
+        for filename in files:
+            # try:
+            print("\033[1;35m file:%s \033[0m!\n" % filename)
+            if '.downloading' in filename:
+                os.remove(os.path.join(root,filename))
+                d +=1
+                continue
+            c += 1
+        for dirname in dirs:
+            print("dir:%s\n" % dirname)
+    print('existed files:', c)
+    print('deleted files:', d)
+if __name__ == "__main__":
+    detect_walk('e:')
